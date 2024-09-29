@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "Borrower Page";
+    Layout = "_LayoutBorrower";
+}
+
+<h2>Request Loan</h2>
+<button class="btn btn-primary mb-3" onclick="showRequestLoanModal()">Request Loan</button>
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title">Saldo</h2>
+                    <p id="userSaldo" class="lead">Saldo Anda: <strong>Rp 0</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<table class="table table-stripped" id="requestedLoanTable">
+    <thead>
+        <tr>
+            <th>Jumlah Pinjaman</th>
+            <th>Bungga</th>
+            <th>Durasi</th>
+            <th>Status Pinjaman</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<!--Request Loan Modal-->
+<div class="modal fade" id="requestLoanModal" tabindex="-1" role="dialog" aria-labelledby="requestLoanModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="requestLoanModalLabel">Edit User</h5>
+            </div>
+            <div class="modal-body">
+                <form id="requestLoanForm">
+                    <div class="form-group">
+                        <label for="amount">Jumlah Pinjaman</label>
+                        <input type="number" class="form-control" id="amount" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="interestRate">Bunga</label>
+                        <input type="text" class="form-control" id="interestRate" required />
+                    </div>
+                    <input type="hidden" id="userId" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="requestLoan()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/borrower.js" asp-append-version="true"></script>
+}

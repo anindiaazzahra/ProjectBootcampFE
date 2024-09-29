@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Lender Page";
+    Layout = "_LayoutLender";
+}
+
+<h2>History Loan</h2>
+<table class="table table-stripped" id="historyLoanTable">
+    <thead>
+        <tr>
+            <th>Nama Peminjam</th>
+            <th>Jumlah Pinjaman</th>
+            <th>Repaid Amount</th>
+            <th>Balance Amount</th>
+            <th>Repaid Status</th>
+            <th>Paid At</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/js/lender.js" asp-append-version="true"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+}

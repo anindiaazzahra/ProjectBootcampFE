@@ -1,0 +1,50 @@
+﻿@{
+    ViewData["Title"] = "Lender Page";
+    Layout = "_LayoutLender";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h2 class="card-title">Saldo</h2>
+                    <p id="userSaldo" class="lead">Saldo Anda: <strong>Rp 0</strong></p>
+                    <button class="btn btn-primary" onclick="showUpdateSaldoModal()">Tambah Saldo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Add Saldo Modal -->
+<div class="modal fade" id="updateSaldoModal" tabindex="-1" role="dialog" aria-labelledby="updateSaldoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateSaldoModalLabel">Tambah Saldo</h5>
+            </div>
+            <div class="modal-body">
+                <form id="updateSaldoForm">
+                    <div class="form-group">
+                        <label for="userBalance">Jumlah Saldo</label>
+                        <input type="number" class="form-control" id="userBalance" placeholder="Masukkan jumlah saldo" required />
+                        <div class="invalid-feedback">Saldo tidak boleh kosong.</div>
+                    </div>
+                    <input type="hidden" id="userId" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" onclick="updateSaldo()">Tambah Saldo</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="~/js/lender.js" asp-append-version="true"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+}
