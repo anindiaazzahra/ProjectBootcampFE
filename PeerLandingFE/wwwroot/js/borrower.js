@@ -186,38 +186,36 @@ async function openMonthlyRepaymentModal(loanId) {
     const token = localStorage.getItem("jwtToken");
     console.log(token);
 
-    const response1 = await fetch(`/ApiRepayment/GetRepaymentByLoanId?loanId=${loanId}`, {
+    const repaymentByLoan = await fetch(`/ApiRepayment/GetRepaymentByLoanId?loanId=${loanId}`, {
         method: 'GET',
         headers: {
             'Authorization': 'Bearer ' + token
         }
     });
 
-    if (!response1.ok) {
+    if (!repaymentByLoan.ok) {
         alert('Gagal mengambil data cicilan.');
         return;
     }
 
-    const repaymentData = await response1.json();
-    console.log(repaymentData);
+    const repaymentData = await repaymentByLoan.json();
 
     if (repaymentData.success) {
-        console.log(repaymentData.data);
         const repaymentId = repaymentData.data.id;
 
-        const response2 = await fetch(`/ApiMonthlyRepayment/GetMonthlyRepaymentByRepaymentId?repaymentId=${repaymentId}`, {
+        const monthlyRepaymentByRepaymentId = await fetch(`/ApiMonthlyRepayment/GetMonthlyRepaymentByRepaymentId?repaymentId=${repaymentId}`, {
             method: 'GET',
             headers: {
                 'Authorization': 'Bearer ' + token
             }
         });
 
-        if (!response2.ok) {
+        if (!monthlyRepaymentByRepaymentId.ok) {
             alert('Gagal mengambil pembayaran bulanan.');
             return;
         }
 
-        const monthlyRepaymentData = await response2.json();
+        const monthlyRepaymentData = await monthlyRepaymentByRepaymentId.json();
 
         if (monthlyRepaymentData.success) {
             console.log(monthlyRepaymentData.data);
