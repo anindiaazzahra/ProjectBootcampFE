@@ -184,7 +184,6 @@ function populateHistoryLoanTable(loans) {
 
 async function openMonthlyRepaymentModal(loanId) {
     const token = localStorage.getItem("jwtToken");
-    console.log(token);
 
     const repaymentByLoan = await fetch(`/ApiRepayment/GetRepaymentByLoanId?loanId=${loanId}`, {
         method: 'GET',
@@ -218,7 +217,6 @@ async function openMonthlyRepaymentModal(loanId) {
         const monthlyRepaymentData = await monthlyRepaymentByRepaymentId.json();
 
         if (monthlyRepaymentData.success) {
-            console.log(monthlyRepaymentData.data);
             const monthlyRepaymentRows = document.getElementById('monthlyRepaymentRows');
             monthlyRepaymentRows.innerHTML = '';
 
@@ -245,7 +243,6 @@ async function openMonthlyRepaymentModal(loanId) {
                 row.appendChild(amountCell);
                 row.appendChild(statusCell);
 
-                console.log(row);
                 monthlyRepaymentRows.appendChild(row);
             });
 
@@ -282,8 +279,6 @@ async function submitRepayment() {
     }
 
     const payload = selectedRepayments;
-
-    console.log("Payload yang dikirim:", payload);
 
     try {
         const response = await fetch('/ApiMonthlyRepayment/UpdateMonthlyRepaymentStatus', {
