@@ -302,6 +302,7 @@ async function submitRepayment() {
                 const data = await response.json();
                 alert('Pembayaran berhasil diajukan!');
                 $('#monthlyRepaymentModal').modal('hide');
+                fetchHistoryLoans();
             } catch (err) {
                 const textResponse = await response.text();
                 console.error('Respon non-JSON:', textResponse);
